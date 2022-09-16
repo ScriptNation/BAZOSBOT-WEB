@@ -32,15 +32,18 @@ for item in product_list:
     name = item.find('h2', class_='nadpis').text.strip()
     price = item.find('div', class_='inzeratycena').text.strip()
     date = item.find('span', class_='velikost10').text.strip()
-    link = item.find('a').text.strip()
+    link_s = item.find('a',href=True)['href']
+    link = f'https://pc.bazos.sk{link_s}'
 
     GPU = {
         'COMPONENT': name,
         'date': date,
-        'CENA': price,
+        'CENA': price+'\n',
+        'link':link,
     }
     GPU_list.append(GPU)
-
+    
+#GPU infos
 item1 = GPU_list[0]['COMPONENT'] + " :    " + GPU_list[0]['CENA']
 item2 = GPU_list[1]['COMPONENT'] + " :    " + GPU_list[1]['CENA']
 item3 = GPU_list[2]['COMPONENT'] + " :    " + GPU_list[2]['CENA']
@@ -51,6 +54,17 @@ item7 = GPU_list[6]['COMPONENT'] + " :    " + GPU_list[6]['CENA']
 item8 = GPU_list[7]['COMPONENT'] + " :    " + GPU_list[7]['CENA']
 item9 = GPU_list[8]['COMPONENT'] + " :    " + GPU_list[8]['CENA']
 item10 = GPU_list[9]['COMPONENT'] + " :    " + GPU_list[9]['CENA']
+#Links for GPU
+link1 = GPU_list[0]['link']
+link2 = GPU_list[1]['link']
+link3 = GPU_list[2]['link']
+link4 = GPU_list[3]['link']
+link5 = GPU_list[4]['link']
+link6 = GPU_list[5]['link']
+link7 = GPU_list[6]['link']
+link8 = GPU_list[7]['link']
+link9 = GPU_list[8]['link']
+link10 = GPU_list[9]['link']
 
 @app.route("/")
 def index():
